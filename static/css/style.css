@@ -1,0 +1,484 @@
+/* ============================= */
+/* ===== GLOBAL ===== */
+/* ============================= */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    color: #1e293b;
+}
+
+/* ============================= */
+/* ===== NAVBAR ===== */
+/* ============================= */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #6366f1, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-right a {
+    text-decoration: none;
+    margin-left: 30px;
+    color: #475569;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.nav-right a:hover {
+    color: #6366f1;
+}
+
+/* ============================= */
+/* ===== MAIN CONTAINER ===== */
+/* ============================= */
+
+.main-container {
+    padding: 60px 80px;
+}
+
+/* ============================= */
+/* ===== HERO SECTION ===== */
+/* ============================= */
+
+.hero {
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #6366f1, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #64748b;
+    margin: 20px 0;
+}
+
+/* ============================= */
+/* ===== CARDS ===== */
+/* ============================= */
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* ============================= */
+/* ===== DASHBOARD GRID ===== */
+/* ============================= */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* ============================= */
+/* ===== METRIC CARDS ===== */
+/* ============================= */
+
+.metric-card {
+    text-align: center;
+}
+
+.metric-label {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #6366f1;
+}
+
+/* ============================= */
+/* ===== FORMS ===== */
+/* ============================= */
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* ============================= */
+/* ===== BUTTONS ===== */
+/* ============================= */
+
+button {
+    background: linear-gradient(90deg, #6366f1, #ec4899);
+    color: white;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* ============================= */
+/* ===== QUIZ BOX ===== */
+/* ============================= */
+
+.question-box {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+
+
+
+/* ============================= */
+/* ===== FIX QUIZ OPTIONS ===== */
+/* ============================= */
+
+.option-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    cursor: pointer;
+}
+
+.option-label input[type="radio"] {
+    width: auto !important;
+    margin: 0;
+    transform: scale(1.2);
+}
+
+
+/* ============================= */
+/* ===== SKILL LIST ===== */
+/* ============================= */
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.skill-item {
+    background: linear-gradient(90deg, #6366f1, #ec4899);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* ============================= */
+/* ===== SKILL BADGES ===== */
+/* ============================= */
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #6366f1, #ec4899);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* Delete button inside badge */
+.delete-form {
+    margin: 0;
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.delete-btn:hover {
+    color: #ffdddd;
+}
+
+/* ============================= */
+/* ===== SIDEBAR LAYOUT ===== */
+/* ============================= */
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    background: linear-gradient(180deg, #6366f1, #8b5cf6);
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-logo {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.sidebar a:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.sidebar a.active {
+    background: white;
+    color: #6366f1;
+    font-weight: 600;
+}
+
+.main-content {
+    flex: 1;
+    padding: 50px;
+    background: #f8fafc;
+    overflow-y: auto;
+}
+
+/* ============================= */
+/* ===== COLLAPSIBLE SIDEBAR ===== */
+/* ============================= */
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    background: linear-gradient(180deg, #6366f1, #8b5cf6);
+    color: white;
+    padding: 20px;
+    transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.collapsed {
+    width: 80px;
+}
+
+.sidebar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.sidebar-logo {
+    font-weight: 700;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.2s ease;
+}
+
+.sidebar a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar a.active {
+    background: white;
+    color: #6366f1;
+    font-weight: 600;
+}
+
+.main-content {
+    flex: 1;
+    padding: 50px;
+    background: #f8fafc;
+    overflow-y: auto;
+}
+
+/* ============================= */
+
+.roadmap-container {
+    width: 70%;
+    margin: 50px auto;
+}
+
+.step-card {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transform: translateY(40px);
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+}
+
+.step-card:nth-child(2) { animation-delay: 0.2s; }
+.step-card:nth-child(3) { animation-delay: 0.4s; }
+.step-card:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.roadmap-card {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.roadmap-card input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+.roadmap-card button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    color: #764ba2;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.roadmap-card button:hover {
+    transform: scale(1.05);
+    transition: 0.2s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.step-number {
+    background: #6c63ff;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.step-details {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.step-details li {
+    margin-bottom: 8px;
+}
+.learning-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-top: 15px;
+    background: #f9fafb;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.learning-info h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.learning-status {
+    font-size: 12px;
+    color: #10b981;
+    font-weight: 600;
+}
+
+.remove-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h1>📊 Performance Dashboard</h1>
+    <p>Track your learning progress and improvement over time.</p>
+</div>
+
+<!-- ===== Metrics Section ===== -->
+<div class="dashboard-grid">
+
+    <div class="card metric-card">
+        <div class="metric-label">Total Skills</div>
+        <div class="metric-value">{{ total_skills }}</div>
+    </div>
+
+    <div class="card metric-card">
+        <div class="metric-label">Latest Test Score</div>
+        <div class="metric-value">{{ latest_score }}</div>
+    </div>
+
+    <div class="card metric-card">
+        <div class="metric-label">Communication Entries</div>
+        <div class="metric-value">{{ total_comm }}</div>
+    </div>
+
+</div>
+
+<!-- ===== Progress Chart ===== -->
+<div class="card chart-card">
+    <div class="chart-header">
+        <h3>📈 Score Progress Over Time</h3>
+    </div>
+    <canvas id="progressChart"></canvas>
+</div>
+
+<script>
+const ctx = document.getElementById('progressChart');
+
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ labels | tojson }},
+        datasets: [{
+            label: 'Score (%)',
+            data: {{ scores | tojson }},
+            borderColor: '#6366f1',
+            backgroundColor: 'rgba(99,102,241,0.15)',
+            borderWidth: 3,
+            tension: 0.4,
+            fill: true,
+            pointRadius: 5,
+            pointHoverRadius: 8
+        }]
+    },
+    options: {
+        responsive: true,
+        animation: {
+            duration: 1200
+        },
+        plugins: {
+            legend: {
+                display: true
+            }
+        },
+        scales: {
+            y: {
+                min: 0,
+                max: 100,
+                grid: {
+                    color: "#e5e7eb"
+                }
+            },
+            x: {
+                grid: {
+                    display: false
+                }
+            }
+        }
+    }
+});
+</script>
+
+<div class="card">
+    <h3>🎤 Interview Performance Trend</h3>
+    <canvas id="interviewChart"></canvas>
+</div>
+
+<script>
+const interviewCtx = document.getElementById('interviewChart');
+
+new Chart(interviewCtx, {
+    type: 'line',
+    data: {
+        labels: {{ interview_labels | tojson }},
+        datasets: [{
+            label: 'Interview Avg Score',
+            data: {{ interview_scores | tojson }},
+            borderWidth: 3,
+            tension: 0.3,
+            fill: false
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                min: 0,
+                max: 10
+            }
+        }
+    }
+});
+</script>
+
+
+{% if learning_paths %}
+<div class="card">
+    <h2>📘 Learning In Progress</h2>
+
+    {% for path in learning_paths %}
+        <div class="learning-item">
+    <div class="learning-info">
+        <h4>{{ path.career }}</h4>
+        <span class="learning-status">In Progress</span>
+    </div>
+
+    <form action="{{ url_for('delete_learning_path', id=path.id) }}" method="POST">
+        <button class="remove-btn" type="submit">✕</button>
+    </form>
+</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>🎤 Communication Lab</h1>
+
+<!-- ================= MODE SELECT ================= -->
+<div class="card mode-selector">
+    <h3>Select Mode</h3>
+
+    <div class="mode-buttons">
+        <a href="/communication/practice">
+            <button>📝 Practice Answer</button>
+        </a>
+
+        <a href="/communication/interview">
+            <button>🤖 Start AI Interview</button>
+        </a>
+    </div>
+</div>
+
+{% if entries is defined %}
+
+<!-- ================= PRACTICE FORM ================= -->
+<div class="card">
+    <h2>Practice Communication</h2>
+
+    <form method="POST">
+        <label>Interview Question</label>
+        <input type="text" name="topic" placeholder="e.g. Introduce Yourself" required>
+
+        <label>Your Answer</label>
+        <textarea name="response" rows="5" required></textarea>
+
+        <button type="submit">Evaluate Answer</button>
+    </form>
+</div>
+
+<!-- ================= HISTORY ================= -->
+{% if entries %}
+<div class="card">
+    <h2>Your Previous Evaluations</h2>
+
+    {% for entry in entries %}
+        <div class="evaluation-box">
+
+            <h3>{{ entry.topic }}</h3>
+
+            <p><strong>Your Answer:</strong></p>
+            <p>{{ entry.response }}</p>
+
+            <div class="score-badge">
+                Score: {{ entry.score }}/10
+            </div>
+
+            <p><strong>AI Feedback:</strong></p>
+            <p>{{ entry.feedback }}</p>
+
+            <p><strong>Improvement Suggestions:</strong></p>
+            <p>{{ entry.suggestions }}</p>
+
+            <small>{{ entry.created_at.strftime("%d %b %Y") }}</small>
+
+            <hr>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endif %}
+
+{% endblock %}

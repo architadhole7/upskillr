@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>🛠 Manage Skills</h1>
+
+<div class="card">
+    <form action="/add-skill" method="POST">
+        <input type="text" name="skill" placeholder="Add new skill" required>
+        <button type="submit">Add Skill</button>
+    </form>
+</div>
+
+{% if skills %}
+<div class="card">
+    <h3>Your Skills</h3>
+    <div class="skill-list">
+        {% for skill in skills %}
+            <div class="skill-item" id="skill-{{ skill.id }}">
+                {{ skill.skill_name }}
+                <button class="delete-btn" onclick="deleteSkill({{ skill.id }})">✕</button>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<script>
+function deleteSkill(skillId) {
+    fetch(`/delete-skill/${skillId}`, { method: "DELETE" })
+    .then(res => res.json())
+    .then(data => {
+        if(data.success){
+            document.getElementById(`skill-${skillId}`).remove();
+        }
+    });
+}
+</script>
+
+{% endblock %}

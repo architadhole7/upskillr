@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HERO -->
+<div class="hero">
+    <h1>🚀 AI Powered Skill Growth</h1>
+    <p>Track your progress. Take AI-generated tests. Improve continuously.</p>
+    <a href="/dashboard">
+        <button>Go to Dashboard</button>
+    </a>
+</div>
+
+<hr style="margin: 50px 0;">
+
+<!-- ADD SKILL -->
+<div class="card">
+    <h2>Add New Skill</h2>
+
+    <form action="/add-skill" method="POST">
+        <input type="text" name="skill" placeholder="Enter skill (Python, Aptitude, etc.)" required>
+        <button type="submit">Add Skill</button>
+    </form>
+</div>
+
+<!-- SKILL LIST -->
+{% if skills %}
+<div class="card">
+    <h2>Your Skills</h2>
+
+    <div class="skill-list">
+        {% for skill in skills %}
+            <div class="skill-item" id="skill-{{ skill.id }}">
+                {{ skill.skill_name }}
+                <button class="delete-btn" onclick="deleteSkill({{ skill.id }})">✕</button>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!-- START TEST -->
+{% if skills %}
+<div class="card">
+    <h2>Start New Test</h2>
+
+    <form action="/start-test" method="POST">
+
+        <label>Select Skill</label>
+        <select name="skill" required>
+            {% for skill in skills %}
+                <option value="{{ skill.skill_name }}">{{ skill.skill_name }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Number of Questions</label>
+        <select name="count">
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+
+        <button type="submit">Generate Test</button>
+    </form>
+</div>
+{% endif %}
+
+<!-- DELETE SKILL SCRIPT -->
+<script>
+function deleteSkill(skillId) {
+    fetch(`/delete-skill/${skillId}`, {
+        method: "DELETE"
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById(`skill-${skillId}`).remove();
+        } else {
+            alert("Failed to delete skill.");
+        }
+    })
+    .catch(error => console.error("Error:", error));
+}
+</script>
+
+
+{% endblock %}

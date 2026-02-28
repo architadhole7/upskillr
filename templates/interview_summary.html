@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>🎯 Interview Summary</h1>
+
+<div class="card">
+    <h2>Average Score: {{ avg_score }}/10</h2>
+</div>
+
+{% for entry in entries %}
+<div class="card">
+    <h3>{{ entry.topic }}</h3>
+    <p><strong>Score:</strong> {{ entry.score }}/10</p>
+    <p><strong>Feedback:</strong></p>
+    <p>{{ entry.feedback }}</p>
+</div>
+{% endfor %}
+
+<a href="/communication/interview">
+    <button>Start New Interview</button>
+</a>
+
+{% endblock %}

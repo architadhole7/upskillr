@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>🧠 Start New Test</h1>
+
+<div class="card">
+    <form action="/start-test" method="POST">
+
+        <label>Select Skill</label>
+        <select name="skill" required>
+            {% for skill in skills %}
+                <option value="{{ skill.skill_name }}">{{ skill.skill_name }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Number of Questions</label>
+        <select name="count">
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+
+        <button type="submit">Generate Test</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Practice Communication</h1>
+
+<div class="card">
+    <form method="POST">
+        <input type="text" name="topic" placeholder="Enter interview question" required>
+        <textarea name="response" rows="5" required></textarea>
+        <button type="submit">Evaluate</button>
+    </form>
+</div>
+
+{% for entry in entries %}
+<div class="card">
+    <h3>{{ entry.topic }}</h3>
+    <p><strong>Score:</strong> {{ entry.score }}/10</p>
+    <p><strong>Feedback:</strong> {{ entry.feedback }}</p>
+    <p><strong>Suggestions:</strong> {{ entry.suggestions }}</p>
+</div>
+{% endfor %}
+
+{% endblock %}

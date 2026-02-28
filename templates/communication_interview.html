@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>🤖 AI Interview</h1>
+
+{% if question_number %}
+<p><strong>Question {{ question_number + 1 }} of 5</strong></p>
+{% endif %}
+
+{% if question %}
+<div class="card">
+    <h3>{{ question }}</h3>
+
+    <form method="POST">
+        <input type="hidden" name="question" value="{{ question }}">
+        <textarea name="answer" rows="5" required></textarea>
+        <button type="submit">Submit Answer</button>
+    </form>
+</div>
+{% endif %}
+
+{% if evaluation %}
+<div class="card">
+    <h3>📊 Evaluation Result</h3>
+
+    <p><strong>Score:</strong> {{ evaluation.score }}/10</p>
+
+    <p><strong>Feedback:</strong></p>
+    <p>{{ evaluation.feedback }}</p>
+
+    <p><strong>Suggestions:</strong></p>
+    <p>{{ evaluation.suggestions }}</p>
+</div>
+{% endif %}
+
+{% endblock %}

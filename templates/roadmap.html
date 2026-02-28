@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="roadmap-container">
+    <h2>Your Roadmap to Becoming {{ career }}</h2>
+
+    {% for step in steps %}
+    <div class="step-card">
+        <div class="step-header">
+            <span class="step-number">Step {{ loop.index }}</span>
+            <h3>{{ step.title }}</h3>
+        </div>
+
+        <ul class="step-details">
+            {% for point in step.details %}
+                <li>{{ point }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endfor %}
+</div>
+
+<div class="roadmap-actions">
+
+    <form action="{{ url_for('save_roadmap') }}" method="POST">
+        <input type="hidden" name="career" value="{{ career }}">
+        <input type="hidden" name="roadmap_json" value='{{ steps | tojson }}'>
+        <button type="submit">💾 Save Roadmap</button>
+    </form>
+    <br>
+    <a href="{{ url_for('index') }}">
+        <button type="button">🔙 Back</button>
+    </a>
+
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ skill }} Test</h1>
+
+<form action="/submit-test" method="POST">
+
+    {% for q in questions %}
+        {% set question_index = loop.index0 %}
+
+        <div class="question-box">
+
+            <p><b>{{ loop.index }}. {{ q.question }}</b></p>
+
+            {% for option in q.options %}
+                <label class="option-label">
+                    <input type="radio"
+                           name="q{{ question_index }}"
+                           value="{{ option }}"
+                           required>
+                    <span>{{ option }}</span>
+                </label>
+            {% endfor %}
+
+            <!-- Hidden Fields -->
+            <input type="hidden"
+                   name="correct{{ question_index }}"
+                   value="{{ q.correct_answer }}">
+
+            <input type="hidden"
+                   name="question{{ question_index }}"
+                   value="{{ q.question }}">
+
+            <input type="hidden"
+                   name="options{{ question_index }}"
+                   value='{{ q.options | tojson }}'>
+
+        </div>
+
+        <hr>
+    {% endfor %}
+
+    <input type="hidden" name="total" value="{{ questions|length }}">
+    <input type="hidden" name="skill" value="{{ skill }}">
+
+    <button type="submit">Submit Test</button>
+
+</form>
+
+{% endblock %}

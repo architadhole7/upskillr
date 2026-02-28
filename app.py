@@ -9,6 +9,7 @@ from services.ai_service import generate_questions, evaluate_response, generate_
 import re
 from database.models import InterviewSession
 from services.ai_service import generate_roadmap, validate_career
+import os
 
 
 
@@ -418,5 +419,6 @@ def career_roadmap_page():
     return render_template("career_roadmap.html")
 
 # ================= RUN =================
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8080)

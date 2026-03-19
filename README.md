@@ -64,20 +64,6 @@ Create a .env file and add:
 
 python app.py
 
-# Deployment
-
-The application is deployed on Render.
-
-Prototype Link: https://upskillr-v218.onrender.com
-
-# ⚠️ Deployment Note
-
-This prototype is deployed using Render’s free-tier infrastructure.
-Due to free-tier limitations, the service may experience cold-start delays after periods of inactivity.
-
-The application functions fully under standard deployment conditions and performs optimally when hosted on a paid production plan.
-
-The system is compute-efficient and compatible with modern multi-core processor architectures, ensuring scalable performance under production environments.
 
 # Future Enhancements
 
